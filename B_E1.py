@@ -11,8 +11,15 @@ def create_graph(n):
             else:
                 nodes.append([temp1,j])
 
+def check(nodes):
+    degree = 0
+    for i in nodes:
+        for j in i:
+            if (j==1):
+                degree+=1
+    return (degree%2 == 0)
+
 def find_eulerian_path():                                       #closed path, starting point equals ending point
-    print(nodes)
     i = 0
     path.append(nodes[0])                                       #initialize eulernian closed road with the first node
     previous_temp = path[0]
@@ -46,8 +53,12 @@ while True:
         continue
 
 create_graph(n)
+flag = check(nodes)
 print(nodes)
-nodes_counter = len(nodes)
-path, nodes = find_eulerian_path()
-if (len(nodes) == 0 and len(path) == nodes_counter):
-    print("Eulerian closed road found in given graph: " + str(path))
+if (flag):
+    nodes_counter = len(nodes)
+    path, nodes = find_eulerian_path()
+    if (len(nodes) == 0 and len(path) == nodes_counter):
+        print("Eulerian closed road found in given graph: " + str(path))
+else:
+    print("Eulerian closed road doesn't exist for given graph.")
