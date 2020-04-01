@@ -1,7 +1,7 @@
 peaks = []
 nodes = []
 path = []
-def create_graph(n):
+def create_graph(n):                                        #create peaks, nodes for Kn
     for i in range(n):
         peaks.append(i+1)
         temp1 = peaks[i]
