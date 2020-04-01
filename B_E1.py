@@ -37,11 +37,10 @@ def find_eulerian_path():                                       #closed path, st
             path.append(reversed_temp)
             nodes.pop(i)
             previous_temp = reversed_temp
-        if (i==len(nodes)):
+        if (i+1>=len(nodes)):
             i=0
         else:
             i+=1
-
     return path, nodes
 
 while True:
@@ -54,11 +53,12 @@ while True:
 
 create_graph(n)
 flag = check(nodes)
-print(nodes)
 if (flag):
     nodes_counter = len(nodes)
     path, nodes = find_eulerian_path()
     if (len(nodes) == 0 and len(path) == nodes_counter):
-        print("Eulerian closed road found in given graph: " + str(path))
+        print("Given graph's peaks: " + str(peaks) + "\nEulerian closed road found in given graph: " + str(path))
+    else:
+        print("There was an error during processing, please try again later!!")
 else:
     print("Eulerian closed road doesn't exist for given graph.")
